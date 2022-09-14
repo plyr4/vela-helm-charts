@@ -3,27 +3,19 @@ entries:
   vela-server:
   - apiVersion: v2
     appVersion: v0.14.3
-    created: "2022-09-14T15:44:34.149018-05:00"
+    created: "2022-09-14T16:56:09.927858-05:00"
     description: Vela server application helm chart.
-    digest: 5cd7dcd40efbad4f7f7869e4ba8dd427a725e4fbd284af4ecc0c2d8e02b6df18
+    digest: da98a04fd1b27bfa6e04e97a1c1507bdced11a788b0c15e18545c80edbbd6c3a
     home: https://go-vela.github.io/docs/
-    icon: https://raw.githubusercontent.com/go-vela/docs/master/assets/icons/logo.svg
     keywords:
-    - continuous-delivery
-    - continuous-deployment
-    - continuous-integration
-    - cicd
-    - cd
-    - docker
     - vela
     - go-vela
-    - go
     kubeVersion: ^1.25.0-0
     name: vela-server
     sources:
     - https://github.com/go-vela/server
     type: application
     urls:
-    - vela-server/vela-server-0.1.0.tgz
-    version: 0.1.0
-generated: "2022-09-14T15:44:34.148247-05:00"
+    - vela-server-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-09-14T16:56:09.926404-05:00"

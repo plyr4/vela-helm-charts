@@ -1,6 +1,6 @@
 image:
-  repository: target/vela-server
-  tag: v0.12.1
+  repository: ubuntu
+  tag: latest
   pullPolicy: IfNotPresent
 
 ## If you need to pull images from a private Docker image repository, pass in the name
@@ -197,6 +197,30 @@ extraSecretNamesForEnvFrom: []
 ## The keys within the "env" map are mounted as environment variables on the Vela server pod.
 ##
 env:
+  # VELA_DATABASE_DRIVER: postgres
+  # VELA_DATABASE_ADDR: 'postgres://vela:zB7mrKDTZqNeNTD8z47yG4DHywspAh@postgres:5432/vela?sslmode=disable'
+  VELA_DATABASE_COMPRESSION_LEVEL: 3
+  VELA_DATABASE_ENCRYPTION_KEY: 'C639A572E14D5075C526FDDD43E4ECF6'
+  VELA_QUEUE_DRIVER: redis
+  VELA_QUEUE_ADDR: 'redis://redis:6379'
+  SCM_DRIVER: github
+  SCM_CONTEXT: 'continuous-integration/vela'
+  SECRET_VAULT: 'true'
+  SECRET_VAULT_ADDR: 'http://vault:8200'
+  SECRET_VAULT_TOKEN: vela
+  VELA_ADDR: https://chart-example.local
+  # VELA_ADDR: 'http://localhost:8080'
+  VELA_WEBUI_ADDR: 'http://localhost:8888'
+  VELA_LOG_LEVEL: trace
+  VELA_SECRET: 'zB7mrKDTZqNeNTD8z47yG4DHywspAh'
+  VELA_REFRESH_TOKEN_DURATION: 90m
+  VELA_ACCESS_TOKEN_DURATION: 60m
+  VELA_DISABLE_WEBHOOK_VALIDATION: 'true'
+  VELA_ENABLE_SECURE_COOKIE: 'false'
+
+  # not in docker-compose
+  VELA_PORT: "8081"
+
   ## Vela Server vars
   ## Ref: https://github.com/go-vela/server/blob/master/cmd/vela-server/main.go
 
@@ -213,12 +237,14 @@ env:
   ## As such, it must be an address that is accessible to the Source provider.
   ## Usage: server address as a fully qualified url (<scheme>://<host>)
   ##
-  VELA_ADDR: https://chart-example.local
+  # VELA_ADDR: https://chart-example.local
+
+  ## TODO:VADER move to values.yaml
+  # VELA_ADDR: https://chart-example.local
 
   ## vela-server will listen on this port (using all addresses similar to 0.0.0.0:<port>)
   ## Usage: server port for the API to listen on
   ##
-  VELA_PORT: "8080"
 
   ## The UI's web address is used when creating comments/metadata with links back to
   ## logs or other build info.
@@ -231,7 +257,7 @@ env:
   ## REQUIRED!
   ## Options: redis (stubs: kafka)
   ## Usage: driver to be used for the queue
-  VELA_QUEUE_DRIVER: redis
+  # VELA_QUEUE_DRIVER: redis
   ##
   ## REQUIRED!
   ## Make sure to adjust this if your redis host/cluster is not accessible on host "redis"

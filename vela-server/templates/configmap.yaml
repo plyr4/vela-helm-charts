@@ -6,8 +6,7 @@ metadata:
     {{- include "vela-server.labels" . | nindent 4 }}
 data:
   {{/*
-    Rather than maintain a comprehensive ConfigMap, we map all sub-keys of the "env" value here.
-    This allows for more flexibility and less Chart churn as Vela evolves.
+    map all sub-keys of the "env" key to allow greater flexibility
   */}}
 {{- range $envKey, $envVal := .Values.env }}
   {{ $envKey | upper }}: {{ $envVal | quote }}
