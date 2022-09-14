@@ -1,0 +1,21 @@
+apiVersion: v2
+name: vela-server
+description: Vela server application helm chart.
+type: application
+version: 0.1.0
+appVersion: "v0.14.3"
+kubeVersion: "^1.25.0-0"
+home: https://go-vela.github.io/docs/
+icon: https://raw.githubusercontent.com/go-vela/docs/master/assets/icons/logo.svg
+keywords:
+  - continuous-delivery
+  - continuous-deployment
+  - continuous-integration
+  - cicd
+  - cd
+  - docker
+  - vela
+  - go-vela
+  - go
+sources:
+  - https://github.com/go-vela/server
