@@ -3,9 +3,9 @@ entries:
   vela-server:
   - apiVersion: v2
     appVersion: v0.14.3
-    created: "2022-09-14T15:30:39.190901-05:00"
+    created: "2022-09-14T15:44:34.149018-05:00"
     description: Vela server application helm chart.
-    digest: 893adff97dcc23d25a58f161d3f70e2eba3fa7565ce5cc51d48081e5b8642542
+    digest: 5cd7dcd40efbad4f7f7869e4ba8dd427a725e4fbd284af4ecc0c2d8e02b6df18
     home: https://go-vela.github.io/docs/
     icon: https://raw.githubusercontent.com/go-vela/docs/master/assets/icons/logo.svg
     keywords:
@@ -24,6 +24,6 @@ entries:
     - https://github.com/go-vela/server
     type: application
     urls:
-    - vela-server-0.1.0.tgz
+    - vela-server/vela-server-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-14T15:30:39.190492-05:00"
+generated: "2022-09-14T15:44:34.148247-05:00"
