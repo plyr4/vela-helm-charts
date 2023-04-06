@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  # worker
+  EXECUTOR_DRIVER: "linux"
+  QUEUE_DRIVER: "redis"
+  QUEUE_ADDR: "redis://redis:6379"
+  VELA_BUILD_LIMIT: "1"
+  VELA_BUILD_TIMEOUT: "30m"
+  VELA_LOG_LEVEL: "trace"
+  VELA_RUNTIME_DRIVER: "kubernetes"
+  VELA_RUNTIME_PRIVILEGED_IMAGES: "target/vela-docker"
+  VELA_EXECUTOR_ENFORCE_TRUSTED_REPOS: "true"
+  VELA_SERVER_ADDR: "http://server:8080"
+  VELA_SERVER_SECRET: "zB7mrKDTZqNeNTD8z47yG4DHywspAh"
+  WORKER_ADDR: "http://worker:8080"
+  WORKER_CHECK_IN: "1m"
+
+  # k8s
+  VELA_RUNTIME_NAMESPACE: "default"
+  VELA_K8S_PAUSE_IMAGE: "registry.k8s.io/pause:3.6"
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: env

@@ -1,0 +1,172 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../go-vela/worker/docker-compose.yml -o ./services/
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: server
+  name: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: server
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../go-vela/worker/docker-compose.yml -o ./services/
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/vela: "true"
+        io.kompose.service: server
+    spec:
+      containers:
+        - env:
+            - name: DATABASE_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  key: DATABASE_DRIVER
+                  name: env
+            - name: DATABASE_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: DATABASE_ADDR
+                  name: env
+            - name: DATABASE_COMPRESSION_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  key: DATABASE_COMPRESSION_LEVEL
+                  name: env
+            - name: DATABASE_ENCRYPTION_KEY
+              valueFrom:
+                configMapKeyRef:
+                  key: DATABASE_ENCRYPTION_KEY
+                  name: env
+            - name: QUEUE_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  key: QUEUE_DRIVER
+                  name: env
+            - name: QUEUE_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: QUEUE_ADDR
+                  name: env
+            - name: SCM_DRIVER
+              valueFrom:
+                configMapKeyRef:
+                  key: SCM_DRIVER
+                  name: env
+            - name: SCM_CONTEXT
+              valueFrom:
+                configMapKeyRef:
+                  key: SCM_CONTEXT
+                  name: env
+            - name: SECRET_VAULT
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET_VAULT
+                  name: env
+            - name: SECRET_VAULT_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET_VAULT_ADDR
+                  name: env
+            - name: SECRET_VAULT_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  key: SECRET_VAULT_TOKEN
+                  name: env
+            - name: VELA_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_ADDR
+                  name: env
+            - name: VELA_WEBUI_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_WEBUI_ADDR
+                  name: env
+            - name: VELA_LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_LOG_LEVEL
+                  name: env
+            - name: VELA_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_SECRET
+                  name: env
+            - name: VELA_SERVER_PRIVATE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_SERVER_PRIVATE_KEY
+                  name: env
+            - name: VELA_REFRESH_TOKEN_DURATION
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_DISABLE_WEBHOOK_VALIDATION
+                  name: env
+            - name: VELA_ACCESS_TOKEN_DURATION
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_ACCESS_TOKEN_DURATION
+                  name: env
+            - name: VELA_DISABLE_WEBHOOK_VALIDATION
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_DISABLE_WEBHOOK_VALIDATION
+                  name: env
+            - name: VELA_ENABLE_SECURE_COOKIE
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_DISABLE_WEBHOOK_VALIDATION
+                  name: env
+            - name: VELA_REPO_ALLOWLIST
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_REPO_ALLOWLIST
+                  name: env
+
+            # .env
+            - name: VELA_SCM_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_SCM_ADDR
+                  name: env
+            - name: VELA_SCM_CLIENT
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_SCM_CLIENT
+                  name: env
+            - name: VELA_SCM_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_SCM_SECRET
+                  name: env
+            - name: VELA_COMPILER_GITHUB
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_COMPILER_GITHUB
+                  name: env
+            - name: VELA_COMPILER_GITHUB_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_COMPILER_GITHUB_TOKEN
+                  name: env
+            - name: VELA_COMPILER_GITHUB_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: VELA_COMPILER_GITHUB_URL
+                  name: env
+          image: target/vela-server:latest
+          name: server
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

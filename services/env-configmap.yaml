@@ -1,0 +1,49 @@
+apiVersion: v1
+data:
+  # server
+  DATABASE_DRIVER: "postgres"
+  DATABASE_ADDR: "postgres://vela:zB7mrKDTZqNeNTD8z47yG4DHywspAh@postgres:5432/vela?sslmode=disable"
+  DATABASE_COMPRESSION_LEVEL: "3"
+  DATABASE_ENCRYPTION_KEY: C639A572E14D5075C526FDDD43E4ECF6
+  QUEUE_DRIVER: redis
+  QUEUE_ADDR: redis://redis:6379
+  SCM_DRIVER: "github"
+  SCM_CONTEXT: "continuous-integration/vela"
+  SECRET_VAULT: "true"
+  SECRET_VAULT_ADDR: "http://vault:8200"
+  SECRET_VAULT_TOKEN: "vela"
+  VELA_ADDR: "http://localhost:8080"
+  VELA_WEBUI_ADDR: "http://localhost:8888"
+  VELA_LOG_LEVEL: trace
+  VELA_SECRET: "zB7mrKDTZqNeNTD8z47yG4DHywspAh"
+  VELA_SERVER_PRIVATE_KEY: "F534FF2A080E45F38E05DC70752E6787"
+  VELA_REFRESH_TOKEN_DURATION: "90m"
+  VELA_ACCESS_TOKEN_DURATION: "60m"
+  VELA_DISABLE_WEBHOOK_VALIDATION: "true"
+  VELA_ENABLE_SECURE_COOKIE: "false"
+  VELA_REPO_ALLOWLIST: "*"
+
+  # ui
+  VELA_API: http://localhost:8080
+
+  # .env
+  VELA_COMPILER_GITHUB: "true"
+  VELA_COMPILER_GITHUB_TOKEN: x
+  VELA_COMPILER_GITHUB_URL: https://github.com
+  VELA_RUNTIME_DRIVER: docker
+  VELA_RUNTIME_PRIVILEGED_IMAGES: target/vela-docker
+  VELA_SCM_ADDR: https://github.com
+  VELA_SCM_CLIENT: <FILL_ME>
+  VELA_SCM_SECRET: <FILL_ME>
+  VELA_SERVER_ADDR: http://server:8080
+  WORKER_ADDR: http://worker:8080
+
+  # postgres
+  POSTGRES_DB: vela
+  POSTGRES_USER: vela
+  POSTGRES_PASSWORD: zB7mrKDTZqNeNTD8z47yG4DHywspAh
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: env
