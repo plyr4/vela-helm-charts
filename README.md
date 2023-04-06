@@ -81,10 +81,6 @@ This is due to an architecture mismatch between your M1/arm64 host machine and t
 
 We need a custom worker image that allows us to provide an override to the kubernetes pause image: `registry.k8s.io/pause:3.6`. This pause image is vela uses to boot up the build/step container pods.
 
-I've built this one, temporarily, for testing.
-```
-image: docker.target.com/app/davidvader/vela-worker-k8s:6
-```
 When running that image in place of the worker image, you MUST provide the environment variable that overrides the pause image:
 ```
 VELA_K8S_PAUSE_IMAGE: registry.k8s.io/pause:3.6
