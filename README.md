@@ -85,4 +85,3 @@ When running that image in place of the worker image, you MUST provide the envir
 ```
 VELA_K8S_PAUSE_IMAGE: registry.k8s.io/pause:3.6
 ```
-
